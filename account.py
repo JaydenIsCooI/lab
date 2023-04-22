@@ -14,10 +14,13 @@ class Account:
         :param amount: Amount of money to be added to the Account's balance
         :return: Returns true if money was added; False if the conditions for amount were not met
         """
-        if amount > 0:
-            self.__account_balance += amount
-            return True
-        return False
+        try:
+            if amount > 0:
+                self.__account_balance += amount
+                return True
+            return False
+        except TypeError:
+            return False
 
     def withdraw(self, amount: float) -> bool:
         """
@@ -26,10 +29,13 @@ class Account:
         :param amount:
         :return: Returns true if money was withdrawn; False if the conditions for amount were not met
         """
-        if self.__account_balance > amount > 0:
-            self.__account_balance -= amount
-            return True
-        return False
+        try:
+            if self.__account_balance > amount > 0:
+                self.__account_balance -= amount
+                return True
+            return False
+        except TypeError:
+            return False
 
     def get_name(self) -> str:
         """
@@ -41,6 +47,6 @@ class Account:
     def get_balance(self) -> float:
         """
         This function returns the Account's balance
-        :return: Returns the Account's balance as a float
+        :return: Re turns the Account's balance as a float
         """
         return self.__account_balance
